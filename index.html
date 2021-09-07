@@ -1,0 +1,45 @@
+<div class="CO05_footer-bottom-lang-select">
+                  <a href="#none" class="CO05_footer-lang-select"><span class="lang-icon" aria-label="language"></span></a>
+                  <ul class="CO05_footer-lang-option">
+                    <li class="option-btn__lang">
+                      <a href="#none" hreflang="en"><span>English</span></a>
+                    </li>
+                    <li class="option-btn__lang">
+                      <a href="#none" hreflang="ja"><span>Japanese</span></a>
+                    </li>
+                    <li class="option-btn__lang selected">
+                      <a href="#none" hreflang="ko"><span>한국어</span></a>
+                    </li>
+                    <li class="option-btn__lang">
+                      <a href="#none" hreflang="zh-CN"><span>中文 (简体)</span></a>
+                    </li>
+                  </ul>
+                </div>
+                
+                
+                
+                
+                
+                
+                function langSelect() {
+    var $langBtn = $('.CO05_footer-lang-select');
+    var $langOption = $('.option-btn__lang > a');
+    $langBtn.on('click', function () {
+      $(this).toggleClass('active').siblings('.CO05_footer-lang-option').toggleClass('active');
+      $langOption.each(function () {
+        $(this).on('click', function () {
+          $(this)
+            .parent()
+            .addClass('selected')
+            .siblings()
+            .removeClass('selected')
+            .parent($langBtn)
+            .removeClass('active')
+            .siblings($langBtn)
+            .removeClass('active');
+          var $text = $('.option-btn__lang.selected a span').html();
+          $langBtn.html($text);
+        });
+      });
+    });
+  }
